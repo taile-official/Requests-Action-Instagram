@@ -32,7 +32,7 @@ class Instagram(object):
             'x-instagram-ajax': self.x_instagram_ajax,
         }
     
-    def getInfoCookie(self):
+    def getInfo(self):
         try:
             id = self.idProfile
             name = self.name
