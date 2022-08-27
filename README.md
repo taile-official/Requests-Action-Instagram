@@ -39,5 +39,24 @@ You can download it from [GitHub Project](https://github.com/taile-official/Requ
 ```shell script
 git clone https://github.com/taile-official/Requests-Action-Instagram
 cd Requests-Action-Instagram
-pip install -r thu.txt
+pip install -r thuvien.txt
+```
+
+
+**Import**
+
+```shell script
+import Instagram
+```
+
+### OR
+
+```shell script
+from InstagramApi import Instagram
+```
+
+** Gọi Class **
+
+```shell script
+import Instagram.py
 ```
