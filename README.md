@@ -55,8 +55,10 @@ import Instagram
 from InstagramApi import Instagram
 ```
 
-** Gọi Class **
+**Gọi Class**
 
 ```shell script
-import Instagram.py
+cookie = "Cookie Web Instagram"
+ins = Instagram(cookie)
 ```
+<p>Gọi class Instagram với tham số là cookie web Instagram(<p>```shell script ins = Instagram(cookie)```
