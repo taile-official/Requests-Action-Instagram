@@ -21,7 +21,7 @@ Our social's💻
 
  * [Matrix Team Telegram group](https://t.me/DD0SChat)
  * [Matrix community Telegram channel](https://t.me/MatrixORG)
- * [GitHub] : [github]
+ * [GitHub](https://github.com/taile-official)
 ### If u Like the project Leave a star on the repository!
 
 ## Downloads
@@ -36,7 +36,7 @@ You can download it from [GitHub Releases](https://github.com/MatrixTM/MHDDoS/re
 * [cfscrape](https://github.com/Anorov/cloudflare-scrape)
 * [impacket](https://github.com/SecureAuthCorp/impacket)
 * [requests](https://github.com/psf/requests)
-* [Python3][python3]
+* [Python3](https://www.python.org/downloads/release/python-3106/)
 * [PyRoxy](https://github.com/MatrixTM/PyRoxy)
 * [icmplib](https://github.com/ValentinBELYN/icmplib)
 * [certifi](https://github.com/certifi/python-certifi)
