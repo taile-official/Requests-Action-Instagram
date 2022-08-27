@@ -29,3 +29,15 @@ You can download it from [GitHub Project](https://github.com/taile-official/Requ
 * [psutil](https://github.com/giampaolo/psutil)
 * [yarl](https://github.com/aio-libs/yarl)
 ---
+
+**Channel**
+* YouTube : https://www.youtube.com/TaiLeOfficial
+
+## Documentation
+**Clone and Install Script**
+
+```shell script
+git clone https://github.com/taile-official/Requests-Action-Instagram
+cd Requests-Action-Instagram
+pip install -r thu.txt
+```
