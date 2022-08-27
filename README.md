@@ -61,4 +61,26 @@ from InstagramApi import Instagram
 cookie = "Cookie Web Instagram"
 ins = Instagram(cookie)
 ```
-Gọi class Instagram với tham số là cookie web Instagram ``` ins = Instagram(cookie )```
+Gọi class Instagram với tham số là cookie web Instagram ``` ins = Instagram(cookie)```
+Những lần tiếp theo chỉ cần gọi hàm theo ý vì cookie đã được đính vào class
+
+## Định cấu hình, Info Cookie
+**Sau khi gọi class Instagram với cookie**
+```shell script
+ ins.setValues()
+```
+Dùng để set các tường name trong cookie tổng để URL trả về kết quả chính xác
+Nếu không gọi hàm này sẽ ko thể sử dụng các hàm khác
+
+  
+## Get Info - Lấy thông tin cá nhân
+```shell script
+follow = ins.getInfo()
+print(follow)
+#(5472148373, "Lê Tuấn Tài")
+```
+  
+## Follow - Theo dõi by user
+```shell script
+follow = ins.
+```
