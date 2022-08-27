@@ -61,4 +61,4 @@ from InstagramApi import Instagram
 cookie = "Cookie Web Instagram"
 ins = Instagram(cookie)
 ```
-<p>Gọi class Instagram với tham số là cookie web Instagram(<p> ``` ins = Instagram(cookie )```
+Gọi class Instagram với tham số là cookie web Instagram ``` ins = Instagram(cookie )```
