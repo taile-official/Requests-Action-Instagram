@@ -87,7 +87,7 @@ print(follow) # => bool : True or False
 
 '''
 follow = ins.followId(54636757344)
-prnt(follow)
+print(follow)
 >>> True
 '''
 ```
