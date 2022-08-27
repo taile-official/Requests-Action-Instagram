@@ -9,24 +9,10 @@ Project Requests instagram using Python code
 <a href="https://github.com/taile-official/Requests-Action-Instagrams"><img alt="MatrixTM issues" src="https://img.shields.io/github/issues/taile-official/Requests-Action-Instagram?color=purple&style=for-the-badge"></a>
 
   
-<h1 align="center">
-Our social's💻
-</h2> 
 
-<div align="center">
-   <img src="https://icon-library.com/images/github-icon-vector/github-icon-vector-27.jpg" width="96" height="96" alt="github" />
-   <img src="https://brandlogos.net/wp-content/uploads/2021/11/discord-logo.png"  width="96" height="96" alt="discord" />
-   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" width="96" height="96" alt="telegram" />
-</div>
+## Downloads - Tải Xuống
 
- * [Matrix Team Telegram group](https://t.me/DD0SChat)
- * [Matrix community Telegram channel](https://t.me/MatrixORG)
- * [GitHub](https://github.com/taile-official)
-### If u Like the project Leave a star on the repository!
-
-## Downloads
-
-You can download it from [GitHub Releases](https://github.com/MatrixTM/MHDDoS/releases)
+You can download it from [GitHub Project](https://github.com/taile-official/Requests-Action-Instagram)
 
 ### Getting Started
 
