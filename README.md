@@ -75,12 +75,19 @@ Nếu không gọi hàm này sẽ ko thể sử dụng các hàm khác
   
 ## Get Info - Lấy thông tin cá nhân
 ```shell script
-follow = ins.getInfo()
-print(follow)
+infoUser = ins.getInfo()
+print(infoUser)
 #(5472148373, "Lê Tuấn Tài")
 ```
   
 ## Follow - Theo dõi by user
 ```shell script
-follow = ins.
+follow = ins.followId(id user instagram)
+print(follow) # => bool : True or False
+
+'''
+follow = ins.followId(54636757344)
+prnt(follow)
+>>> True
+'''
 ```
