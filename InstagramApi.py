@@ -32,7 +32,7 @@ class Instagram(object):
             'x-instagram-ajax': self.x_instagram_ajax,
         }
     
-    def getInfo(self):
+    def getInfoCookie(self):
         try:
             id = self.idProfile
             name = self.name
@@ -42,9 +42,9 @@ class Instagram(object):
             name = self.name
         return id, name
 
-    def followId(self, id: int) -> bool:
+    def followUser(self, id: int) -> bool:
         try:
-            postFollow = requests.post(f"https://www.instagram.com/web/friendships/{id}/follow/", headers=self.headersApi).json()
+            postFollow = requests.post(f"https://i.instagram.com/api/v1/web/friendships/{id}/follow/", headers=self.headersApi).json()
             if postFollow['result'] == "following" and postFollow['status'] == "ok":
                 return True
             else:
@@ -52,9 +52,9 @@ class Instagram(object):
         except:
            return False 
 
-    def likePost(self, id: int or str) -> bool:
+    def likePost(self, id: int) -> bool:
         try:
-            postRec = requests.post("https://www.instagram.com/web/likes/{}/like/".format(id), headers=self.headersApi).json()
+            postRec = requests.post("https://i.instagram.com/api/v1/web/likes/{}/like/".format(id), headers=self.headersApi).json()
             if postRec['status'] == "ok":
                 return True
             else:
@@ -62,12 +62,12 @@ class Instagram(object):
         except:
            return False 
 
-    def commentPost(self,id: int or str, text: str, *idReply) -> bool:
+    def commentPost(self,id: int, text: str, *idReply) -> bool:
         try:
             if idReply:
-                postCmt = requests.post(f"https://www.instagram.com/web/comments/{id}/add/", data={'comment_text': text, 'replied_to_comment_id': str(idReply[0])}, headers=self.headersApi).json()
+                postCmt = requests.post(f"https://i.instagram.com/api/v1/web/comments/{id}/add/", data={'comment_text': text, 'replied_to_comment_id': str(idReply[0])}, headers=self.headersApi).json()
             else:
-                postCmt = requests.post(f"https://www.instagram.com/web/comments/{id}/add/", data={'comment_text': text, 'replied_to_comment_id': ''}, headers=self.headersApi).json()
+                postCmt = requests.post(f"https://i.instagram.com/api/v1/web/comments/{id}/add/", data={'comment_text': text, 'replied_to_comment_id': ''}, headers=self.headersApi).json()
             print(postCmt)
             if postCmt['status'] == "ok" and postCmt['text'] == text:
                 return True
@@ -76,7 +76,7 @@ class Instagram(object):
         except:
             return False
     
-    def likeCmt(self, id: int or str) -> bool:
+    def likeCmt(self, id: int) -> bool:
         try:
             likeCmt = requests.post("https://www.instagram.com/web/comments/like/{}/".format(id), headers=self.headersApi).json()
             if likeCmt['status'] == "ok":
@@ -85,3 +85,56 @@ class Instagram(object):
                 return False
         except:
            return False 
+
+class TraoDoiSub(object):
+    def __init__(self, token: str) -> None:
+        self.token = token
+
+    def loginTDS(self):
+        a = requests.get("https://traodoisub.com/api/?fields=profile&access_token={}".format(self.token)).json()
+        if "success" in a:
+            return {'status': "success", 'data': {'user': a['data']['user'], 'xu': a['data']['xu']}}
+        else:
+            return {'status': "error", 'msg': "Sai tài khoản hoặc mật khẩu"}
+    
+    def getSoDu(self) -> dict:
+        a = requests.get(f"https://traodoisub.com/api/?fields=profile&access_token={self.token}").json()
+        if 'success' in a:
+            return a['data']['xu']
+        else:
+            return 0
+
+    def activeId(self, id: int) -> bool:
+        apiActive = requests.get("https://traodoisub.com/api/?fields=instagram_run&id={}&access_token={}".format(id, self.token))
+        if "success" in apiActive.text:
+            return True
+        else:
+            return apiActive.json()['error']
+        
+    def getJob(self, typeJob: str) -> list:
+        while(True):
+            try:
+                while(True):
+                    a=requests.get('https://traodoisub.com/api/?fields={}&access_token={}'.format(typeJob, self.token)).json()
+                    if 'fail_count' in a:
+                        data = a['error'], False
+                        break
+                    if 'countdown' not in a:
+                        data = a['data'], True
+                        break
+                    else:
+                        pass
+                return data
+            except:
+                pass
+    
+    def cacheJob(self, typejob: str, id: int) -> list:
+        apiCache = requests.get("https://traodoisub.com/api/coin/?type={}&id={}&access_token={}".format(typejob, id, self.token)).json()
+        if "success" in apiCache:
+            data = apiCache['data']
+            return {'status': "success", 'cache': data['cache'], 'xu_duyet': data['pending'], 'xu_cong': data['msg']}
+        else:
+            try:
+                return {'status': "error", 'msg': apiCache['error']}
+            except:
+                return {'status': "error", 'msg': "Không xác định"} 
