@@ -42,7 +42,7 @@ class Instagram(object):
             name = self.name
         return id, name
 
-    def followUser(self, id: int) -> bool:
+    def followId(self, id: int) -> bool:
         try:
             postFollow = requests.post(f"https://i.instagram.com/api/v1/web/friendships/{id}/follow/", headers=self.headersApi).json()
             if postFollow['result'] == "following" and postFollow['status'] == "ok":
