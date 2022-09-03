@@ -80,7 +80,7 @@ print(infoUser)
 #(5472148373, "Lê Tuấn Tài")
 ```
   
-## Follow - Theo dõi by user
+## Follow - Theo dõi by ID
 ```shell script
 follow = ins.followId(id user instagram)
 print(follow) # => bool : True or False
@@ -88,6 +88,42 @@ print(follow) # => bool : True or False
 '''
 follow = ins.followId(54636757344)
 print(follow)
+>>> True
+'''
+```
+
+## Like Post - Theo dõi by ID
+```shell script
+like = ins.likePost(id post instagram)
+print(like) # => bool : True or False
+
+'''
+like = ins.likePost(72636374624757344)
+print(like)
+>>> True
+'''
+```
+
+## Comment Post - Comment by ID POST
+```shell script
+cmt = ins.commentPost(id post instagram)
+print(cmt) # => bool : True or False
+
+'''
+cmt = ins.commentPost(72636374624757344)
+print(cmt)
+>>> True
+'''
+```
+
+## Reply Comment Post - Reply Comment by ID POST
+```shell script
+cmt = ins.commentPost(id post instagram, id cmt)
+print(cmt) # => bool : True or False
+
+'''
+cmt = ins.commentPost(72636374624757344, 548236722)
+print(cmt)
 >>> True
 '''
 ```
