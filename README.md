@@ -18,16 +18,8 @@ You can download it from [GitHub Project](https://github.com/taile-official/Requ
 
 **Requirements**
 
-* [dnspython](https://github.com/rthalley/dnspython)
-* [cfscrape](https://github.com/Anorov/cloudflare-scrape)
-* [impacket](https://github.com/SecureAuthCorp/impacket)
 * [requests](https://github.com/psf/requests)
 * [Python3](https://www.python.org/downloads/release/python-3106/)
-* [PyRoxy](https://github.com/MatrixTM/PyRoxy)
-* [icmplib](https://github.com/ValentinBELYN/icmplib)
-* [certifi](https://github.com/certifi/python-certifi)
-* [psutil](https://github.com/giampaolo/psutil)
-* [yarl](https://github.com/aio-libs/yarl)
 ---
 
 **Channel**
