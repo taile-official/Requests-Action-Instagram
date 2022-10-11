@@ -18,7 +18,7 @@ class Instagram(object):
             }
             post = requests.get("https://www.instagram.com/", headers=headers).text
             self.idProfile = post.split('''"viewerId":"''')[1].split('"}')[0]
-            self.x_instagram_ajax = post.split('''rollout_hash":"''')[1].split('",')[0]
+            self.x_instagram_ajax = post.split('''rollout_hash":''')[1].split('",')[0]
             self.appId = post.split('''"appId":"''')[1].split('","')[0]
             self.name = json.loads(unicode_escape_decode(post.split('full_name\\":')[1].split(',\\"')[0])[0])
             self.headersApi = {
@@ -52,6 +52,7 @@ class Instagram(object):
             "http"  : "http://{}".format(proxy), 
             "https" : "http://{}".format(proxy), 
         }
+        
 
     def followUser(self, id: int, proxy = None) -> bool:
         try:
@@ -140,7 +141,10 @@ class Instagram(object):
         except Exception as e:
             return False
     
-    def up_load_post(self, img_path: str,proxy = None, *caption) -> bool:
+    def up_load_post(self, img_path: str, *caption, proxy = None) -> bool:
+        if caption:
+            caption = caption[0]
+        print(img_path, caption, proxy)
         try:
             upload_id = int(datetime.now().timestamp())
             url_load_img = "https://i.instagram.com/rupload_igphoto/fb_uploader_{}".format(upload_id)
@@ -157,12 +161,11 @@ class Instagram(object):
                 'x-instagram-ajax': self.x_instagram_ajax,
                 'x-instagram-rupload-params': f'{{"media_type":1,"upload_id":"{upload_id}","upload_media_height":780,"upload_media_width":780}}',
             }
-            data = open(img_path, "rb")
-            requests.post(url=url_load_img,data=data, headers=headers).json()
+            dataPost = open(img_path, "rb")
             url_up_post = "https://i.instagram.com/api/v1/media/configure/"
             data = {
                 'source_type': "library",
-                'caption': caption if caption else "",
+                'caption': str(caption) if caption else "",
                 'upload_id': upload_id,
                 'disable_comments': "0",
                 'like_and_view_counts_disabled': "0",
@@ -171,12 +174,20 @@ class Instagram(object):
                 'video_subtitles_enabled': "0"
             }
             if proxy != None:
-                up_post = requests.post(url = url_up_post, headers = self.headersApi, proxies=self.proxyDict).json()
+                print(self.proxyDict)
+                print(requests.post(url=url_load_img,data=dataPost, headers=headers, proxies=self.proxyDict).json())
+                up_post = requests.post(url = url_up_post, headers = self.headersApi, data = data, proxies=self.proxyDict).json()
             else:
+                print(requests.post(url=url_load_img,data=dataPost, headers=headers).json())
                 up_post = requests.post(url = url_up_post, headers = self.headersApi, data = data).json()
+            print(up_post)
             if up_post['status'] == "ok":
                 return True
             else:
                 return False
         except Exception as e:
             return False
+
+# ig = Instagram('rur="EAG\05455965676825\0541696950444:01f7b9cbf9e81bc20b93d853fc799920d582a6c15ec061e780df78628e7fbb9fe3743957";datr=HjVEYzqSTEIRQzKSHfKbQskk;mid=Y0Q08gAEAAGD3XUWmOxVUWtP-HUU;csrftoken=FNQExe5YF0o18gQqyhYTojm6gvbgr4LO;ig_nrcb=1;sessionid=55965676825%3A858nNLIxnQRV8n%3A29%3AAYeoMI_p4yi4FphYRsgL3fkp4dHbRjRRrIWOBBfm6w;ds_user_id=55965676825;ig_did=F2814E22-E075-4097-AFCA-BFA1A3AB2130;')
+# ig.proxyAdd('116.104.246.132:44169')
+# print(ig.up_load_post('K:/Desktop/avt/78120482_284916806219213_3180643575855579136_n.jpg', "Auto By Tài", proxy = True))
