@@ -119,3 +119,27 @@ print(cmt)
 >>> True
 '''
 ```
+  
+## Auto Upload Avatar OR Change Avatar Profile
+```shell script
+up_avt = ins.up_avt(path image)
+print(up_avt) # => bool : True or False
+
+'''
+up_avt = ins.up_avt("C:/user/.../img/avt.jpg")
+print(up_avt)
+>>> True
+'''
+```
+  
+## Auto Upload Post Caption OR No Caption
+```shell script
+up_post = ins.up_load_post(path image, *caption)
+print(up_post) # => bool : True or False
+
+'''
+up_post = ins.up_load_post("C:/user/.../img/avt.jpg", "String Caption)
+print(up_post)
+>>> True
+'''
+```
